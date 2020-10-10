@@ -14,14 +14,14 @@ public class About implements CommandExecutor {
         if (sender instanceof Player) {
             Player p1 = (Player) sender;
             p1.sendMessage("Hey, you are a player!");
-            diamond(p1);
+            giveDiamond(p1);
         } else
             sender.sendMessage("Hey, you are a console!");
 
         return true;
     }
 
-    public void diamond(Player player) {
+    public void giveDiamond(Player player) {
         player.getInventory().addItem(new ItemStack(Material.DIAMOND));
     }
 }
