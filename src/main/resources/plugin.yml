@@ -1,0 +1,25 @@
+name: SMPEssentials
+version: ${project.version}
+main: com.gmail.kyle94024.smpessentials.SMPEssentials
+api-version: 1.16
+authors: [kwbcs]
+description: Kyle's Cool Minecraft Plugin
+commands:
+  ping:
+    description: Ping Pong
+    usage: /<command>
+  about:
+    description: Display information about the plugin
+    usage: /<command>
+  coinflip:
+    description: You either win...or lose
+    usage: /<command>
+  choosecolor:
+    description: Chooses a random color
+    usage: /<command>
+  tpa:
+    description: Teleport to another player
+    usage: /<command>
+  tpaccept:
+    description: Accept a teleport request
+    usage: /<command>
