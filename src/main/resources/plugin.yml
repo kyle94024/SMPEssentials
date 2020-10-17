@@ -22,4 +22,5 @@ commands:
     usage: /<command>
   tpaccept:
     description: Accept a teleport request
-    usage: /<command>
+  tpdeny:
+    description: Deny a teleport request

@@ -77,7 +77,14 @@ public class Teleport implements CommandExecutor {
             }
         } else if (command.getName().equalsIgnoreCase("tpdeny")) {
             // TODO: Implement
-            killRequest(sender)
+            if (currentRequests.containsKey(player)){
+                killRequest(player,"denied");
+                return true;
+            }
+            else{
+                player.sendMessage("There is no teleport request to deny.");
+            }
+
         }
         return false;
     }
@@ -97,14 +104,32 @@ public class Teleport implements CommandExecutor {
     }
 
     public boolean killRequest(Player target) {
+        return killRequest(target,"expired");
+    }
+
+
+    public boolean killRequest(Player target, String status ) {
         if (currentRequests.containsKey(target)) {
             Player requester = currentRequests.get(target);
-            if (requester.isOnline())
-                requester.sendMessage("Your teleport request to " + target.getDisplayName() + " has expired.");
-            if (target.isOnline())
-                target.sendMessage(requester.getDisplayName() + " teleport request to you has expired.");
+            if (requester.isOnline()) {
+                if (status.equals("expired")){
+                    requester.sendMessage("Your teleport request to " + target.getDisplayName() + " has expired.");
+                }
+                else if (status.equals("denied")){
+                    requester.sendMessage("Your teleport request to " + target.getDisplayName() + " was denied.");
+                }
+            }
+            if (target.isOnline()) {
+                if(status.equals("expired")){
+                    target.sendMessage(requester.getDisplayName() + "'s teleport request to you has expired.");
+                }
+               else if(status.equals("denied")){
+                   target.sendMessage(("You have denied " + requester.getDisplayName() + "'s teleport request."));
+                }
+            }
             currentRequests.remove(target);
             return true;
+
         }
         return false;
     }
