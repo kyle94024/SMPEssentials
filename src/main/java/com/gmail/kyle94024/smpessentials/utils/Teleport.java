@@ -77,6 +77,7 @@ public class Teleport implements CommandExecutor {
             }
         } else if (command.getName().equalsIgnoreCase("tpdeny")) {
             // TODO: Implement
+            killRequest(sender)
         }
         return false;
     }

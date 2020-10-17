@@ -12,8 +12,8 @@ public class Essentials implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(label.equalsIgnoreCase("getbalance")){
-            if(args.length>0) {
+        if (label.equalsIgnoreCase("getbalance")){
+            if (args.length > 0) {
                 sender.sendMessage(args[0] + "'s balance is %s" + getEconomy().getBalance(args[0]));
             } else{
                 sender.sendMessage("Please declare the player of who you want to get the balance of.");
@@ -21,6 +21,10 @@ public class Essentials implements CommandExecutor {
             }
         }
 
+        else if (label.equalsIgnoreCase("pay")) {
+            // TODO: implement
+
+        }
 
         return false;
     }
