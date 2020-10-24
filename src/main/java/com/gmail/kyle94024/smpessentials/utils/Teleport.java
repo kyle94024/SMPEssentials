@@ -16,7 +16,8 @@ import java.util.Map;
 public class Teleport implements CommandExecutor {
 
     // [0] => playerRequester [1] => playerTarget
-    private static Map<Player, Player> currentRequests = new HashMap<Player, Player>();
+    private static Map<Player, Map.Entry<Player, Integer>> currentRequests = new HashMap<Player,Map.Entry<Player,Integer>>();
+    private Integer Id = Map<1>;
     // { {Player player1, Player player2},{Player player3, PLayer player4} }
 
     @Override
@@ -44,10 +45,13 @@ public class Teleport implements CommandExecutor {
                 int keepAlive = 400;
 
                 sendRequest(player, targetPlayer);
-                Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) SMPEssentials.getPlugin(), new Runnable() {
+
+                int task = Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) SMPEssentials.getPlugin(), new Runnable() {
+
                     @Override
                     public void run() {
                         killRequest(targetPlayer);
+
                     }
                 }, keepAlive);
 
@@ -79,6 +83,7 @@ public class Teleport implements CommandExecutor {
             // TODO: Implement
             if (currentRequests.containsKey(player)){
                 killRequest(player,"denied");
+
                 return true;
             }
             else{
@@ -92,7 +97,7 @@ public class Teleport implements CommandExecutor {
 
 
     public void sendRequest(Player requester, Player target) {
-        currentRequests.put(target, requester);
+        currentRequests.put(target,<requester,>);
         requester.sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD +"Sending a teleport request to " + target.getDisplayName() + ".");
 
         String[] messages = new String[3];
