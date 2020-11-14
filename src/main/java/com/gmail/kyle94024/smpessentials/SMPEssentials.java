@@ -1,5 +1,6 @@
 package com.gmail.kyle94024.smpessentials;
 
+import com.gmail.kyle94024.smpessentials.economy.Essentials;
 import com.gmail.kyle94024.smpessentials.utils.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -7,8 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SMPEssentials extends JavaPlugin {
 
-    private static SMPEssentials plugin;
-    private static Economy econ;
+    private static SMPEssentials plugin = null;
+    private static Economy econ = null;
 
     @Override
     public void onEnable() {
@@ -22,7 +23,11 @@ public final class SMPEssentials extends JavaPlugin {
         this.getCommand("tpa").setExecutor(new Teleport());
         this.getCommand("tpaccept").setExecutor(new Teleport());
         this.getCommand("tpdeny").setExecutor(new Teleport());
-        setupEconomy();
+        this.getCommand("pay").setExecutor(new Essentials());
+        this.getCommand("getbalance").setExecutor(new Essentials());
+        Boolean econSetup = setupEconomy();
+        System.out.println(econSetup);
+        System.out.println(getEconomy());
     }
 
     private boolean setupEconomy() {

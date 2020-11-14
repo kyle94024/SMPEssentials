@@ -24,3 +24,9 @@ commands:
     description: Accept a teleport request
   tpdeny:
     description: Deny a teleport request
+  pay:
+    description: Pay someone with your coins
+    usage: /<command>
+  getbalance:
+    description: get the balance of a player
+    usage: /<command>
